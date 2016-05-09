@@ -9,7 +9,7 @@ from .models import SpeedtestModel
 log = logging.getLogger(__name__)
 
 
-class SpeedoDaemon(object):
+class PySpeedoDaemon(object):
 
     def __init__(self, host, interval, databaseUrl, server):
         self.host = host
