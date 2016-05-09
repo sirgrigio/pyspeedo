@@ -11,10 +11,10 @@ log = logging.getLogger(__name__)
 
 class PySpeedoDaemon(object):
 
-    def __init__(self, host, interval, databaseUrl, server):
+    def __init__(self, host, interval, dburl, server):
         self.host = host
         self.interval = interval
-        self.databaseUrl = databaseUrl
+        self.dburl = dburl
         self.server = server
 
     def run(self):
@@ -22,7 +22,7 @@ class PySpeedoDaemon(object):
             dict(host=self.host,
                  server=self.server,
                  interval=self.interval,
-                 databaseUrl=self.databaseUrl)))
+                 dburl=self.dburl)))
         st = SpeedTest(host=self.server)
         while(True):
             log.debug('Starting speed test')
