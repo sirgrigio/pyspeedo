@@ -1,4 +1,6 @@
-from peewee import *
+from peewee import Model
+from peewee import BigIntegerField, CharField, IntegerField
+from peewee import Proxy
 
 db_proxy = Proxy()
 
