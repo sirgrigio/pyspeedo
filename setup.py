@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 setup(
     name='pyspeedo',
     version='0.1',
-    description='Network speed monitor',
+    description='A network\'s speed monitoring tool',
     license='GPLv3',
     url='https://github.com/zmcode/pyspeedo',
     install_requires=['cement',
