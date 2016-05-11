@@ -1,4 +1,5 @@
 import socket
+import logging
 from cement.core.foundation import CementApp
 from cement.utils.misc import init_defaults
 from pyspeedo.core.daemon import PySpeedoDaemon
@@ -15,6 +16,17 @@ class PySpeedoApp(CementApp):
         label = 'pyspeedo'
         config_defaults = defaults
         arguments_override_config = True
+
+
+def configure_log(level=logging.DEBUG):
+    log = logging.getLogger('pyspeedo')
+    log.setLevel(level)
+    handler = logging.StreamHandler()
+    handler.setLevel(level)
+    formatter = logging.Formatter(
+        '%(asctime)s (%(levelname)s) %(name)s : %(message)s')
+    handler.setFormatter(formatter)
+    log.addHandler(handler)
 
 
 def main():
@@ -40,8 +52,9 @@ def main():
             dest='dburl',
             help='The database url')
         app.run()
+        if app.debug:
+            configure_log()
         conf = app.config.get_section_dict('monitoring')
-        print(conf)
         daemon = PySpeedoDaemon(**conf)
         daemon.run()
 
