@@ -33,7 +33,7 @@ class PySpeedoDaemon(object):
                          upload=st.upload())
             endTime = utils.current_time_millisec()
             log.debug('Speed test completed: {0}'.format(stats))
-            db.initialize(connect(self.databaseUrl))
+            db.initialize(connect(self.dburl))
             db.create_tables([SpeedtestModel], safe=True)
             SpeedtestModel.create(host=self.host,
                                   startTime=startTime,

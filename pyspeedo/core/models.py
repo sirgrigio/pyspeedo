@@ -20,4 +20,4 @@ class SpeedtestModel(BaseModel):
     upload = IntegerField()
 
     class Meta:
-        indexes = ((('host', 'timestamp'), True))
+        indexes = ((('host', 'startTime'), True),)
