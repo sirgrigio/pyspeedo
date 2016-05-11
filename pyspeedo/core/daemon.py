@@ -18,7 +18,7 @@ class PySpeedoDaemon(object):
         self.server = server
 
     def run(self):
-        log.debug('Starting deamon: {0}'.format(
+        log.debug('Starting daemon: {0}'.format(
             dict(host=self.host,
                  server=self.server,
                  interval=self.interval,
