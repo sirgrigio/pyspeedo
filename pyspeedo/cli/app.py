@@ -52,8 +52,8 @@ def main():
             dest='dburl',
             help='The database url')
         app.run()
-        if app.debug:
-            configure_log()
+        logLevel = logging.DEBUG if app.debug else logging.WARNING
+        configure_log(logLevel)
         conf = app.config.get_section_dict('monitoring')
         daemon = PySpeedoDaemon(**conf)
         daemon.run()
