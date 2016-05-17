@@ -19,13 +19,16 @@ class PySpeedoApp(CementApp):
 
 
 def configure_log(level=logging.DEBUG):
-    log = logging.getLogger('pyspeedo')
-    log.setLevel(level)
     handler = logging.StreamHandler()
     handler.setLevel(level)
     formatter = logging.Formatter(
         '%(asctime)s (%(levelname)s) %(name)s : %(message)s')
     handler.setFormatter(formatter)
+    log = logging.getLogger('pyspeedo')
+    log.setLevel(level)
+    log.addHandler(handler)
+    log = logging.getLogger('pyspeedtest')
+    log.setLevel(level)
     log.addHandler(handler)
 
 
